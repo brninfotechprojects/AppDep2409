@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
 const multer = require("multer");
+const path = require("path");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const dotenv = require("dotenv");
@@ -12,6 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use("/uploads", express.static("uploads"));
+app.use(express.static(path.join(__dirname, "./client/build")));
 
 let authorise = (req, res, next) => {
   console.log("inside authorise mwf");
@@ -35,6 +37,10 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
+app.get("*", (req, res) => {
+  res.sendFile("./client/build/index.html");
+});
 
 app.post("/signup", upload.single("profilePic"), async (req, res) => {
   console.log(req.body);

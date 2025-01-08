@@ -29,7 +29,7 @@ function EditProfile() {
 
     mobileNoInputRef.current.value = userDetails.mobileNo;
 
-    setProfilePic(`http://localhost:4568/${userDetails.profilePic}`);
+    setProfilePic(`/${userDetails.profilePic}`);
   }, []);
 
   let onUpdateProfile = async () => {
@@ -50,10 +50,7 @@ function EditProfile() {
       body: dataToSend,
     };
 
-    let JSONData = await fetch(
-      "http://localhost:4568/updateProfile",
-      reqOptions
-    );
+    let JSONData = await fetch("/updateProfile", reqOptions);
 
     let JSOData = await JSONData.json();
 

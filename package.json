@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "build":"yarn --prefix ./client && npm run build --prefix ./client && npm install",
+    "build":"yarn --prefix ./client && yarn build --prefix ./client && npm install",
     "start": "nodemon server.js"
   },
   "keywords": [],

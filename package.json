@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "build":"yarn --prefix ./client && yarn build --prefix ./client && yarn",
+    "build": "yarn --cwd ./client install && yarn --cwd ./client build && yarn install",
+
     "start": "node server.js"
   },
   "keywords": [],
